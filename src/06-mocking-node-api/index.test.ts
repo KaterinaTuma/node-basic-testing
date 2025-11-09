@@ -23,13 +23,13 @@ describe('doStuffByTimeout', () => {
   });
 
   test('should set timeout with provided callback and timeout', () => {
-  const callback = jest.fn();
-  doStuffByTimeout(callback, 2000);
-  expect(callback).not.toHaveBeenCalled();
-  jest.advanceTimersByTime(1999);
-  expect(callback).not.toHaveBeenCalled();
-  jest.advanceTimersByTime(1);
-  expect(callback).toHaveBeenCalledTimes(1);
+    const callback = jest.fn();
+    doStuffByTimeout(callback, 2000);
+    expect(callback).not.toHaveBeenCalled();
+    jest.advanceTimersByTime(1999);
+    expect(callback).not.toHaveBeenCalled();
+    jest.advanceTimersByTime(1);
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 
   test('should call callback only after timeout', () => {

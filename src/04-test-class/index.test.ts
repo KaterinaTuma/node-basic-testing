@@ -9,7 +9,6 @@ describe('BankAccount', () => {
     const balance = account.getBalance();
     const expextedBalance = 100;
     expect(balance).toBe(expextedBalance);
-
   });
 
   test('should throw InsufficientFundsError error when withdrawing more than balance', () => {
@@ -19,10 +18,10 @@ describe('BankAccount', () => {
   });
 
   test('should throw error when transferring more than balance', () => {
-  const account1 = getBankAccount(100);
-  const account2 = getBankAccount(100);
-  const attemptOvertransfer = () => account1.transfer(200, account2);
-  expect(attemptOvertransfer).toThrow(InsufficientFundsError);
+    const account1 = getBankAccount(100);
+    const account2 = getBankAccount(100);
+    const attemptOvertransfer = () => account1.transfer(200, account2);
+    expect(attemptOvertransfer).toThrow(InsufficientFundsError);
   });
 
   test('should throw error when transferring to the same account', () => {
@@ -67,15 +66,17 @@ describe('BankAccount', () => {
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
-  const account = getBankAccount(100);
-  account.fetchBalance = async () => 42;
-  await account.synchronizeBalance();
-  expect(account.getBalance()).toBe(42);
+    const account = getBankAccount(100);
+    account.fetchBalance = async () => 42;
+    await account.synchronizeBalance();
+    expect(account.getBalance()).toBe(42);
   });
 
   test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
-  const account = getBankAccount(100);
-  account.fetchBalance = async () => null;
-  await expect(account.synchronizeBalance()).rejects.toBeInstanceOf(SynchronizationFailedError);
+    const account = getBankAccount(100);
+    account.fetchBalance = async () => null;
+    await expect(account.synchronizeBalance()).rejects.toBeInstanceOf(
+      SynchronizationFailedError,
+    );
   });
 });

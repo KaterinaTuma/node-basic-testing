@@ -61,7 +61,7 @@ describe('simpleCalculator tests', () => {
     const rawInput = {
       a: 1,
       b: 2,
-      action: '$'
+      action: '$',
     };
     const res = simpleCalculator(rawInput);
     const expectedRes = null;
@@ -72,7 +72,7 @@ describe('simpleCalculator tests', () => {
     const rawInput = {
       a: true,
       b: 2,
-      action: '+'
+      action: '+',
     };
     const res = simpleCalculator(rawInput);
     const expectedRes = null;
